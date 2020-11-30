@@ -9,8 +9,8 @@ namespace Hamnen.Classes.Harbour
     {
         public int DayCounter { get; set; }
         public int FreeSpots { get; set; }
+        public int BoatsRejected { get; set; }
 
-        public List<BoatsParent> BoatsRejected = new List<BoatsParent>();
         public List<BoatsParent> harbourqueue = new List<BoatsParent>();
         public BoatsParent[] harbourspots = new BoatsParent[25];
 
@@ -102,6 +102,7 @@ namespace Hamnen.Classes.Harbour
                     }
                 }
             }
+            BoatsRejected++;
             return boat;
         }
         private void AddBoatToSlot(BoatsParent boat, int startSpot)
@@ -113,7 +114,7 @@ namespace Hamnen.Classes.Harbour
         }
         public void DisplayBoatsRejected()
         {
-            Console.WriteLine($"{BoatsRejected.Count()} was rejected");
+            Console.WriteLine($"{BoatsRejected} was rejected");
         }
         private bool RoomForBoat(int startSpot, int boatSize)
         {
